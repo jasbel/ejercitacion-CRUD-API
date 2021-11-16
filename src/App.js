@@ -1,9 +1,18 @@
 import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody, Modal, Button, TextField } from '@material-ui/core';
 import { Edit, Delete } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { Button ,TextField, Modal} from '@material-ui/core';
+
 
 
 function App() {
@@ -166,28 +175,32 @@ const seleccionarConsola=(consola, caso)=>{
   return (
     <div className="App">
       <br />
-      <Button onClick={()=>abrirCerrarModalInsertar()}>INSERTAR</Button>
+      <Button 
+      variant="contained"
+      size="large"
+        className={estilos.buttonInsertar}
+        onClick={()=>abrirCerrarModalInsertar()}>INSERTAR</Button>
       <br />
-      <TableContainer>
-        <Table>
+      <TableContainer component={Paper}>
+        <Table> 
           <TableHead>
             <TableRow>
-              <TableCell>NOMBRE</TableCell>
-              <TableCell>EMPRESA</TableCell>
-              <TableCell>LANZAMIENTO</TableCell>
-              <TableCell>UNIDADES VENDIDAS (millones)</TableCell>
-              <TableCell>Acciones</TableCell>
+              <StyledTableCell>NOMBRE</StyledTableCell>
+              <StyledTableCell>EMPRESA</StyledTableCell>
+              <StyledTableCell>LANZAMIENTO</StyledTableCell>
+              <StyledTableCell>UNIDADES VENDIDAS (millones)</StyledTableCell>
+              <StyledTableCell>Acciones</StyledTableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
             {data.map(consola => (
-              <TableRow key={consola.id}>
-                <TableCell>{consola.name}</TableCell>
-                <TableCell>{consola.empresa}</TableCell>
-                <TableCell>{consola.lanzamiento}</TableCell>
-                <TableCell>{consola.unidades_vendidas}</TableCell>
-                <TableCell>
+              <StyledTableRow key={consola.id}>
+                <StyledTableCell>{consola.name}</StyledTableCell>
+                <StyledTableCell>{consola.empresa}</StyledTableCell>
+                <StyledTableCell>{consola.lanzamiento}</StyledTableCell>
+                <StyledTableCell>{consola.unidades_vendidas}</StyledTableCell>
+                <StyledTableCell>
                   <Edit
                     onClick={()=>seleccionarConsola(consola, 'editar')} 
                     className={estilos.iconos} />
@@ -195,8 +208,8 @@ const seleccionarConsola=(consola, caso)=>{
                   <Delete
                     onClick={()=>seleccionarConsola(consola, 'eliminar')}  
                     className={estilos.iconos} />
-                </TableCell>
-              </TableRow>
+                </StyledTableCell>
+              </StyledTableRow>
             ))}
           </TableBody>
         </Table>
@@ -229,7 +242,25 @@ const seleccionarConsola=(consola, caso)=>{
   );
 }
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
 
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -253,5 +284,9 @@ const useStyles = makeStyles((theme) => ({
   inputMaterial: {
     width: '100%'
   },
+  buttonInsertar :{
+    color: 'blue',
+    marginBottom: '25px'
+  }
 }))
 export default App;
