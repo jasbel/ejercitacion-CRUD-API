@@ -136,35 +136,42 @@ function App() {
     <div className={estilos.modal}>
       <h3> Editar Consola</h3>
       <TextField
-        name="name"
+        name="title"
         className={estilos.inputMaterial}
         label="Nombre"
         onChange={handlerChange}
-        value={consolaSeleccionada && consolaSeleccionada.name}
+        value={consolaSeleccionada && consolaSeleccionada.title}
       ></TextField>
       <br />
       <TextField
-        name="empresa"
+        name="description"
         className={estilos.inputMaterial}
         label="Empresa"
         onChange={handlerChange}
-        value={consolaSeleccionada && consolaSeleccionada.empresa}
+        value={consolaSeleccionada && consolaSeleccionada.description}
       ></TextField>
       <br />
       <TextField
-        name="lanzamiento"
+        name="price"
         className={estilos.inputMaterial}
         label="Fecha de Lanzamiento"
         onChange={handlerChange}
-        value={consolaSeleccionada && consolaSeleccionada.lanzamiento}
+        value={consolaSeleccionada && consolaSeleccionada.price}
       ></TextField>
       <br />
       <TextField
-        name="unidades_vendidas"
+        name="categories"
         className={estilos.inputMaterial}
         label="Unidades Vendidas"
         onChange={handlerChange}
-        value={consolaSeleccionada && consolaSeleccionada.unidades_vendidas}
+        value={consolaSeleccionada && consolaSeleccionada.categories}
+      ></TextField>
+      <TextField
+        name="stock"
+        className={estilos.inputMaterial}
+        label="Unidades Vendidas"
+        onChange={handlerChange}
+        value={consolaSeleccionada && consolaSeleccionada.stock}
       ></TextField>
       <br />
       <div align="right">
