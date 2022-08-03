@@ -115,13 +115,14 @@ function App() {
   const bodyInsertar = (
     <div className={estilos.modal}>
       <h3>Agregar Nueva Consola</h3>
-      <TextField name="name" className={estilos.inputMaterial} label="Nombre" onChange={handlerChange}></TextField>
+      <TextField name="title" className={estilos.inputMaterial} label="title" onChange={handlerChange}></TextField>
       <br />
-      <TextField name="empresa" className={estilos.inputMaterial} label="Empresa" onChange={handlerChange}></TextField>
+      <TextField name="description" className={estilos.inputMaterial} label="description" onChange={handlerChange}></TextField>
       <br />
-      <TextField name="lanzamiento" className={estilos.inputMaterial} label="Fecha de Lanzamiento" onChange={handlerChange}></TextField>
+      <TextField name="price" className={estilos.inputMaterial} label="Precio" onChange={handlerChange}></TextField>
       <br />
-      <TextField name="unidades_vendidas" className={estilos.inputMaterial} label="Unidades Vendidas" onChange={handlerChange}></TextField>
+      <TextField name="categories" className={estilos.inputMaterial} label="Categorias" onChange={handlerChange}></TextField>
+      <TextField name="stock" className={estilos.inputMaterial} label="stock" onChange={handlerChange}></TextField>
       <br />
       <div align="right">
         <Button onClick={() => peticionPost()} color="primary">
@@ -162,14 +163,14 @@ function App() {
       <TextField
         name="categories"
         className={estilos.inputMaterial}
-        label="Unidades Vendidas"
+        label="Categorias"
         onChange={handlerChange}
         value={consolaSeleccionada && consolaSeleccionada.categories}
       ></TextField>
       <TextField
         name="stock"
         className={estilos.inputMaterial}
-        label="Unidades Vendidas"
+        label="stock"
         onChange={handlerChange}
         value={consolaSeleccionada && consolaSeleccionada.stock}
       ></TextField>
